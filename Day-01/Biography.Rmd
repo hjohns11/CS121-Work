@@ -4,7 +4,7 @@ A Short Biography of Hunter Johnson
 ## Currently
 
 
-* I am a student at [Macalester College](http://www.macalester.edu/) in Saint Paul, MN
+* I'm a student at [Macalester College](http://www.macalester.edu/) in Saint Paul, MN
 * I'm studying Applied Math and Statistics and play on the football team
 
 
