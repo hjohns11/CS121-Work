@@ -1,7 +1,7 @@
 A Short Biography of Hunter Johnson
 ============
 
-## Currently
+##Currently
 
 
 * I'm a student at [Macalester College](http://www.macalester.edu/) in Saint Paul, MN
