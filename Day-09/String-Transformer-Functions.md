@@ -1,0 +1,87 @@
+# October 1, 2013
+
+## Reverser
+
+Reverses the order from the last written element to the first written element, so the last element written is first and the first element written is last.
+
+
+## Test Statements
+
+```r
+reverser <- function(x) {
+    newFunc = strsplit(x, split = "")
+    ans = newFunc[[1]][1:nchar(x)]
+    return(rev(ans))
+}
+reverser("black")
+```
+
+```
+## [1] "k" "c" "a" "l" "b"
+```
+
+
+
+# Scrambler
+
+Input is a vector, the output is a the vector but the elements in a random order.
+
+
+## Test Statements
+
+```r
+scrambler <- function(x) {
+    newFunc = strsplit(x, split = "")
+    ans = newFunc[[1]][1:nchar(x)]
+    return(sample(ans))
+}
+scrambler("seven")
+```
+
+```
+## [1] "v" "s" "e" "n" "e"
+```
+
+
+#VowelBleeper
+
+
+```r
+vowelsOut <- function(x) {
+    ans = gsub("[aeiou]", "*", x)
+    return(ans)
+}
+vowelsOut("onomonopeia")
+```
+
+```
+## [1] "*n*m*n*p***"
+```
+
+
+# L33t
+
+
+```r
+L33t <- function(x) {
+    newFunc = gsub("e", "3", x)
+    newFunc1 = gsub("o", "0", newFunc)
+    newFunc2 = gsub("s", "5", newFunc1)
+    newFunc3 = gsub("g", "9", newFunc2)
+    
+    return(newFunc3)
+}
+L33t("eosgeosghheosg")
+```
+
+```
+## [1] "30593059hh3059"
+```
+
+
+# Substituion Cypher
+
+```{r} # same as L33t, but longer, every letter is replaced by only one other letter
+subCypher <- function(x){
+  
+}

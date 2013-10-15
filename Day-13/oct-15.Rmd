@@ -1,0 +1,9 @@
+``` {r}
+x <- 99
+f <- function(x){
+  x <<-2+x
+  return(x)
+}
+f(4)
+x
+```

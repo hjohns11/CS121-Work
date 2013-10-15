@@ -1,0 +1,16 @@
+``` {r}
+myDiff <- function(x) {
+  var <- length(x)
+  x[var]-x[var-1]
+}
+myDiff(1:10, by=2)
+```
+
+```{r}
+threeNum<- function(x) {
+  ans = c(min(x),median(x),max(x))
+  return(ans)
+  }
+threeNum(1:10)
+```
+

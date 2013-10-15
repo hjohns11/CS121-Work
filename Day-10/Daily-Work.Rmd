@@ -1,0 +1,60 @@
+words <- readLines(url("http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt"))
+```{r}
+findScrabble <- function(letters) {
+  
+  for (k in 1:length(letters)) {
+   words <- words[grep(letters[k], words)]
+   if(length(words)<10) break  # When the vector of words contains less than 10 vectors, break out of loop
+   }
+  return(length(words))
+  }
+findScrabble(c("n", "r", "b"))
+```
+
+``` {r}
+currentFib <- function(n) {
+  current <- 1
+  beforeIt <- 0
+  for(k in 1:n) {
+    tmp <- current + beforeIt
+    beforeIt <- current
+    current <- tmp
+    }
+  return(current)
+  }
+currentFib(1)
+currentFib(2)
+currentFib(4)
+currentFib(6)
+currentFib(7)
+```
+``` {r}
+listOfFib <- function(n) {
+  if (n<0 | floor(n) != n) {
+    warning("Wrong input")
+    return(NA)
+    }
+  sofar <- c(0,1)
+  for ( k in 3:n) {
+    sofar[k] <- sofar[k-1] + sofar[k-2]
+    }
+  return(sofar)
+  }
+listOfFib(10)
+listOfFib(-4)
+```
+
+
+``` {r}
+primeNums <- function(n) {
+  guess <- rep(TRUE, n)
+  inds <- 1:n
+  for (k in 2:n) {
+    if( guess[k] ) {
+      guess[(inds%%k)==0 & inds>k] <- FALSE
+      }
+  }
+  return(which(guess))
+  }
+primeNums(50)
+```

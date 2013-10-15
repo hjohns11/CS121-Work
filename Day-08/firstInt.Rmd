@@ -1,0 +1,7 @@
+``` {r}
+firstInt <- function(x){
+as.character(x)
+ans = as.numeric(substr(x,0,1))
+return(ans)
+}
+firstInt(109294)

@@ -1,0 +1,55 @@
+``` {r}
+pigLatinRule <- function(word){
+  res <- 0
+  if (grepl("^[^aeiou]+$",word)) {
+    res <- "No Vowels"
+  } else {
+    if (grepl("^[^aeiou].*$",word)){
+      res <- "Consonant Start"}
+    else {
+      res <- "Vowel Start"}
+  }
+  return(res)
+}
+pigLatinRule("sofar")
+```
+
+``` {r}
+pigLatinRules2 <- function(word){
+res <- 0
+if (grepl("[^aeiou]", word)){
+  res <- "no vowels"
+  } 
+
+if(grepl("^[^aeiouAEIOU]", word)){ 
+  res <- "Consonant Start"
+  } else {
+  res <- "Vowel Start"
+  } 
+return(res)
+}
+```  # Cannot figure out how to reurn no vowels on to strings which it is applicable.
+
+``` {r}
+rule2 <- function(word) {
+  ans <- paste(word, "yay", sep = "")
+return(ans)
+  }
+
+rule3 <- function(word) {
+  ans <- paste(word, "yay", sep = "")
+return(ans)
+}
+```
+
+``` {r}
+rule1 <- function(word) {
+  length <- nchar(word)
+  firstVowel <- as.numeric(regexpr("[aeiou]", word))
+  newString <- strsplit(word, split = "")[[1]]
+  newWord <- paste(newString[firstVowel:length], collapse = "")
+  newNew <- paste(newWord, newString[1:firstVowel-1], "ay", collapse = "", sep = "")
+  return(newNew)
+  
+  }
+
