@@ -1,0 +1,64 @@
+## Task 1
+
+
+```r
+toBase <- function(int, base) {
+    
+    sofar <- c()
+    while (int != 0) {
+        r <- int%%base
+        sofar <- c(sofar, r)
+        int <- (int - r)/base
+    }
+    return(sofar)
+}
+toBase(43, 3)
+```
+
+```
+## [1] 1 2 1 1
+```
+
+
+## Task 2
+
+
+```r
+basetoNumeric <- function(v, b) {
+    v <- as.numeric(v)
+    count <- 0
+    size <- 1
+    for (k in length(v):1) {
+        count <- count + size * v[k]
+        size <- size * b
+    }
+    return(count)
+}
+
+basetoNumeric(c("7", "6", "5", "4"), 8)
+```
+
+```
+## [1] 4012
+```
+
+              
+
+```r
+baseToNumeric <- function(v, base) {
+    l <- length(v)
+    b <- base^((l - 1):0)
+    # OR return(sum(as.numeric(v)*b))
+    firstNum <- v[l] * b[l]
+    secNum <- v[l - 1] * b[l - 1]
+    thirdNum <- v[l - 2] * b[l - 2]
+    fourthNum <- v[l - 3] * b[l - 3]
+    ans <- sum(firstNum, secNum, thirdNum, fourthNum)
+    return(ans)
+}
+baseToNumeric(c(7, 6, 5, 4), 8)
+```
+
+```
+## [1] 4012
+```

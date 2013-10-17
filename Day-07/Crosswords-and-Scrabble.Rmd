@@ -1,0 +1,151 @@
+words <- readLines(url("http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt"))
+``` {r}
+
+NumOfOneLet<- function(x) {
+  oneLet <- length(grep("^.$", x))
+  return(oneLet)
+}
+NumOfOneLet(words)
+
+NumOfTwoLet <- function(x) {
+  twoLet <- length(grep("^..$", x))
+  return(twoLet) 
+}
+ NumOfTwoLet(words)
+
+NumOfThreeLet <- function(x) {
+  ThreeLet <- length(grep("^...$", x))
+  return(ThreeLet)
+}
+NumOfThreeLet(words)
+```
+
+``` {r}
+v <- c("a","bros","hey", "ba", "r", "o", "o")
+longestWords <- function(x) {
+  results <- c()
+  b <- which.max(nchar(x))
+  results <- c(results, x[b])
+  x <- x[-b]
+     
+  c <- which.max(nchar(x))
+  results <- c(results, x[c])
+  x <- x[-c]
+  
+  
+  d <- which.max(nchar(x))
+  results <- c(results, x[d])
+  x <- x[-d]
+  
+
+  e <- which.max(nchar(x))
+  results<- c(results, x[e])
+  x <- x[-e]
+  return(results)
+  }
+
+``` 
+
+
+
+``` {r}
+startWithA <- function(x) {
+  a <- grep("^a.*", x)
+  return(length(a))
+  }
+startWithA(c("apple","ass","nad","bad"))
+
+startWithB <- function(x) {
+  b <- grep("^b.*", x)
+  return(length(b))
+  }
+startWithB(c("apple","ass","nad","bad"))
+
+startWithC <- function(x) {
+  c <- grep("^c.*", x)
+  return(length(c))
+  }
+startWithC(c("apple","ass","nad","bad"))
+```
+
+```{r}
+v <- c("uoqu", "uquo", "aqao", "uoqoaq", "abcd", "abqgohn", "aqua", "aqaa", "aaaoaoaoaoaoaoaoquofofofofofof", "ahahahahaqhahahaha")
+qButNoU <- function(x) {
+  a = grep("q[^u]", x)
+  return(v[c(a)])
+}
+qButNoU(v)
+```
+
+``` {r}
+v <- (c("a", "bb", "cccc", "dddd", "eeeee"))
+crossword <- function(x) {
+  ans <- grep(x, v)
+  return(v[ans])
+  }
+crossword("cc")
+```
+
+``` {r}
+words <- readLines(url("http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt"))
+
+crosswordPattern <- function(word, length){
+  subLength <- rep(".", length)
+  subLength[word] <- names(word)
+  grepSub <- paste("^", paste(subLength, collapse=""), "$", sep="")
+  ans <- grep(grepSub, words)
+  return(words[ans])
+}
+crosswordPattern(c(a=1,b=2),7)
+
+```
+
+
+``` {r}
+scrabble <- function(x) {
+  newString = strsplit(x, split = "")[[1]]
+  search = newString[1]
+  otherWords = words[grep(search,words)]
+  search2 = newString[2]
+  otherWords = otherWords[grep(search2, otherWords)]
+  search3 = newString[3]
+  otherWords = otherWords[grep(search3, otherWords)]
+  search4 = newString[4]
+  otherWords = otherWords[grep(search4, otherWords)]
+  search5 = newString[5]
+  otherWords = otherWords[grep(search5, otherWords)]
+ 
+  results = c()
+  topWord = otherWords[which.max(nchar(otherWords))]
+  results = c(results, topWord)
+  otherWords = otherWords[-topWord]
+  
+  sceondWord = otherWords[which.max(nchar(otherWords))]
+  results = c(results, secondWord)
+  otherWords = otherWords[-secondWord]
+  }
+  scrabble("abczz")
+```
+
+``` {r}
+scrabble <- function(word){
+  splitword <- strsplit(word,split = "")[[1]]
+  search <- c()
+  for (k in 1:length(splitword)){
+    search <- splitword[k]
+    words <- words[grep(search,words)]
+  }
+  results <- c()
+  topword <- c()
+  for (topword in words){
+    ind <-  which.max(nchar(words)) 
+    topword <- words[ind]
+    words <- words[-ind]
+    results <- c(results, topword)
+    if (length(results)>=10)
+      break
+  }
+  return(results)
+}
+scrabble("apple")
+```
