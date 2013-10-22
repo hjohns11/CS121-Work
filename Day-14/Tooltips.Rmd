@@ -1,0 +1,24 @@
+# NOT DONE
+
+```{r}
+<style>
+.hiword {background:pink;}
+</style>
+This <span class='hiword' title='This one!'>set of words</span> has a tooltip.
+```
+
+# Not quite there
+``` {r results='asis}
+formatToWord <- function(word, translation, class) {
+  if(is.na(trans))
+    return(word)
+  x <- paste("<span class='",class, "'", sep = "") 
+  y <- paste(x,"title='", translation, "'>", sep="")
+  z <- paste(y,word,"</span>", sep = "" )
+  return(z)
+  }
+#formatToWord("Hello", "hi there!", "hiword")
+
+
+cat(formatWord("Hello", "hi there!", class = "hiword"), "to", "all", "of", "you", "in", formatWord("Television Land.", "TV viewers", class = "hiword"))
+```

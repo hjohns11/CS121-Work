@@ -18,7 +18,8 @@ outliers(1:10)
 ```r
 EnglishNumbers <- c("zero", "one", "two", "three", "four")
 numToText <- function(num, lang) {
-    return(lang[num + 1])
+    ans <- lang[num + 1]
+    return(ans)
 }
 numToText(2, EnglishNumbers)
 ```
@@ -26,6 +27,22 @@ numToText(2, EnglishNumbers)
 ```
 ## [1] "two"
 ```
+
+
+
+```r
+EnglishNumbers <- c("zero", "one", "two", "three", "four")
+TextToNum <- function(word, lang) {
+    ans = which(lang == word)
+    return(ans - 1)
+}
+TextToNum("three", EnglishNumbers)
+```
+
+```
+## [1] 3
+```
+
 
 
 
@@ -46,15 +63,14 @@ digitToWord(0)
 
 ```r
 lettersMatch <- function(words, pattern) {
-    a = grepl("^.pattern", words)
+    a = grep(pattern, words)
     return(a)
 }
-lettersMatch(c("aa", "aaa", "bb"), aa)
+lettersMatch(c("apple", "berry", "carrie", "rr"), "rr")
 ```
 
 ```
-## [1] FALSE FALSE FALSE
+## [1] 2 3 4
 ```
-
 
 

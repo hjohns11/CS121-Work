@@ -1,5 +1,7 @@
 ## Drawing Circles and Squares
 
+#DONE
+
 ```{r}
 plot(1:2, ylab = "y-axis",type="n", xlim = c(0,100), ylim=c(0,100))
 

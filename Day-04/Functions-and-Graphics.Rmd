@@ -1,5 +1,7 @@
 require(plotrix)
 
+# DONE
+
 ```{r}
 countOdds <- function(x) {
   k <- 0

@@ -1,7 +1,7 @@
  SIMPLEST CASES $\;$ $\;$ $\;$ $\;$ 25
 ==============
 
-
+#DONE
 
 *Summary.* Let us see how far we have got. We  
 have arrived at the following rule : To differentiate  

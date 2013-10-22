@@ -190,24 +190,45 @@ outliers(1:10)
 <pre><code>##  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
 </code></pre>
 
-<pre><code class="r">digitToWord &lt;- function(v) {
-    if (v == 0) {
-        return(as.numeric(&quot;dog&quot;))
-    }
+<pre><code class="r">EnglishNumbers &lt;- c(&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;)
+numToText &lt;- function(num, lang) {
+    ans &lt;- lang[num + 1]
+    return(ans)
+}
+numToText(2, EnglishNumbers)
+</code></pre>
 
+<pre><code>## [1] &quot;two&quot;
+</code></pre>
+
+<pre><code class="r">EnglishNumbers &lt;- c(&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;)
+TextToNum &lt;- function(word, lang) {
+    ans = which(lang == word)
+    return(ans - 1)
+}
+TextToNum(&quot;three&quot;, EnglishNumbers)
+</code></pre>
+
+<pre><code>## [1] 3
+</code></pre>
+
+<pre><code class="r">digitToWord &lt;- function(integer, language) {
+    if (v == 0) {
+        return(&quot;dog&quot;)
+    }
 }
 </code></pre>
 
 <p>digitToWord(0)</p>
 
 <pre><code class="r">lettersMatch &lt;- function(words, pattern) {
-    a = grepl(&quot;^pattern&quot;, words)
+    a = grep(pattern, words)
     return(a)
 }
-lettersMatch(c(&quot;aa&quot;, &quot;aaa&quot;, &quot;bb&quot;), aa)
+lettersMatch(c(&quot;apple&quot;, &quot;berry&quot;, &quot;carrie&quot;, &quot;rr&quot;), &quot;rr&quot;)
 </code></pre>
 
-<pre><code>## [1] FALSE FALSE FALSE
+<pre><code>## [1] 2 3 4
 </code></pre>
 
 </body>

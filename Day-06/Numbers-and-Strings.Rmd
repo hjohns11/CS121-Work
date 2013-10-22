@@ -27,7 +27,7 @@ TextToNum("three", EnglishNumbers)
 ```
 
 
-
+## Need to Finish
 ``` {r}
 digitToWord <- function(integer,language) {
   if (v == 0){
@@ -49,4 +49,36 @@ lettersMatch(c("apple", "berry", "carrie", "rr"), "rr" )
 ```
 
 ``` {r}
-piSeries <- 
+piSeries <- function(n) {
+  k <- 1:n
+  sum <- 4*(1-(1/k[3]))
+  sum <- sum + (1/k[5])
+  sum <- sum - (1/k[7])
+  sum <- sum + (1/k[9])
+  sum <- sum - (1/k[11])
+  sum <- sum
+  return(sum)
+  }
+piSeries(7)
+```
+
+## Very close, can't quite alternate plus and negative though
+``` {r}
+other <- function(n) {
+  sum <- 0
+  f <- 1:n
+  for (k in 1:n) {
+    sum <- sum + ((-1)^k)
+    if (k%%2 != 0 ) {
+      k <- k+1
+      }
+  return(sum)
+  }
+  }
+```
+
+## IDK
+``` {r}
+howCloseToPi <- function(n) {
+  
+}

@@ -1,0 +1,65 @@
+# Not DONE
+
+``` {r}
+BlastOffPaste <- function(x) {
+  ans <- paste("5,","4,","3,","2,","1,", "Blastoff!", collapse = "/n")
+  return(cat(ans))
+}
+BlastOffPaste(5)
+```
+
+## Still not yet fully done
+``` {r}
+blastOffFor <- function(x) {
+  count <- 0
+  ans <- c()
+  for(k in x:1){
+    count <- k
+    ans <- c(ans, count)
+    }
+  return(paste(ans, "Blastoff!", collapse = ""))
+  }  
+blastOffFor(5)
+```
+
+``` {r}
+blastWhile <- function(x) {
+  ans <- c()
+  while (x >= 1 == TRUE) {
+    ans <- c(ans, x)
+  }
+return(ans)
+  }
+```
+
+``` {r}
+blastOffRep <- function(x) {
+  time <- 5
+  repeat {
+    x <- cat(time, " ")
+    time <- time - 1
+    if (time < 1) 
+        break
+         }
+  
+  return(cat(paste(x, "Blastoff!", sep = "")))
+}
+blastOffRep(5)
+```
+
+``` {r}
+pushButton <- function(N) {
+  result <- rep(NA, N)
+  for ( k in 1:N) {
+    
+    start <- Sys.time()
+    readline("Press return:")
+    end <- Sys.time()
+    total <- as.numeric(end - start)
+    cat(rep("\n", 1))
+    result[k] <- total
+    Sys.sleep(runif(1,1,5))
+    }
+  return(result)
+  }
+```

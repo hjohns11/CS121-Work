@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title></title>
+<title>Day 14</title>
 
 <style type="text/css">
 body, td {
@@ -178,20 +178,29 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<pre><code class="r">toBase &lt;- function(int, base) {
-    sofar &lt;- c()
+<h2>Day 14</h2>
 
-    while (int != 0) {
-        r &lt;- (int%%base)
-        sofar &lt;- c(sofar, r)
-        int &lt;- (int - r)/b
+<h1>Reverse a vector recursively</h1>
+
+<pre><code class="r">revRec &lt;- function(v) {
+    browser()
+    if (length(v) == 1) 
+        return(v) else {
+        c(revRec(v[-1]), v[1])
     }
-    return(sofar)
+
 }
-toBase(43)
+revRec(c(5, 4, 3, 2, 1))
 </code></pre>
 
-<pre><code>## Error: &#39;base&#39; is missing
+<pre><code>## Called from: revRec(c(5, 4, 3, 2, 1))
+## Called from: revRec(v[-1])
+## Called from: revRec(v[-1])
+## Called from: revRec(v[-1])
+## Called from: revRec(v[-1])
+</code></pre>
+
+<pre><code>## [1] 1 2 3 4 5
 </code></pre>
 
 </body>

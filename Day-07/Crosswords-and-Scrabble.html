@@ -178,9 +178,9 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<p>words &lt;- readLines(url(&ldquo;<a href="http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt%22)">http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt&rdquo;)</a>)</p>
+<pre><code class="r">words &lt;- readLines(url(&quot;http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt&quot;))
 
-<pre><code class="r">
+
 NumOfOneLet &lt;- function(x) {
     oneLet &lt;- length(grep(&quot;^.$&quot;, x))
     return(oneLet)
@@ -188,7 +188,7 @@ NumOfOneLet &lt;- function(x) {
 NumOfOneLet(words)
 </code></pre>
 
-<pre><code>## Error: object &#39;words&#39; not found
+<pre><code>## [1] 0
 </code></pre>
 
 <pre><code class="r">
@@ -199,7 +199,7 @@ NumOfTwoLet &lt;- function(x) {
 NumOfTwoLet(words)
 </code></pre>
 
-<pre><code>## Error: object &#39;words&#39; not found
+<pre><code>## [1] 85
 </code></pre>
 
 <pre><code class="r">
@@ -210,10 +210,11 @@ NumOfThreeLet &lt;- function(x) {
 NumOfThreeLet(words)
 </code></pre>
 
-<pre><code>## Error: object &#39;words&#39; not found
+<pre><code>## [1] 908
 </code></pre>
 
-<pre><code class="r">v &lt;- c(&quot;a&quot;, &quot;bros&quot;, &quot;hey&quot;, &quot;ba&quot;, &quot;r&quot;, &quot;o&quot;, &quot;o&quot;)
+<pre><code class="r">words &lt;- readLines(url(&quot;http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt&quot;))
+
 longestWords &lt;- function(x) {
     results &lt;- c()
     b &lt;- which.max(nchar(x))
@@ -235,13 +236,24 @@ longestWords &lt;- function(x) {
     x &lt;- x[-e]
     return(results)
 }
+longestWords(words)
 </code></pre>
 
-<pre><code class="r">startWithA &lt;- function(x) {
+<pre><code>## Warning: closing unused connection 5
+## (http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt)
+</code></pre>
+
+<pre><code>## [1] &quot;counterdemonstrations&quot; &quot;hyperaggressivenesses&quot; &quot;microminiaturizations&quot;
+## [4] &quot;counterdemonstration&quot;
+</code></pre>
+
+<pre><code class="r">
+
+startWithA &lt;- function(x) {
     a &lt;- grep(&quot;^a.*&quot;, x)
     return(length(a))
 }
-startWithA(c(&quot;apple&quot;, &quot;ass&quot;, &quot;nad&quot;, &quot;bad&quot;))
+startWithA(c(&quot;abunch&quot;, &quot;none&quot;, &quot;seven&quot;, &quot;ass&quot;, &quot;behind&quot;, &quot;bro&quot;, &quot;crop&quot;))
 </code></pre>
 
 <pre><code>## [1] 2
@@ -252,10 +264,10 @@ startWithB &lt;- function(x) {
     b &lt;- grep(&quot;^b.*&quot;, x)
     return(length(b))
 }
-startWithB(c(&quot;apple&quot;, &quot;ass&quot;, &quot;nad&quot;, &quot;bad&quot;))
+startWithB(c(&quot;abunch&quot;, &quot;none&quot;, &quot;seven&quot;, &quot;ass&quot;, &quot;behind&quot;, &quot;bro&quot;, &quot;crop&quot;))
 </code></pre>
 
-<pre><code>## [1] 1
+<pre><code>## [1] 2
 </code></pre>
 
 <pre><code class="r">
@@ -263,10 +275,10 @@ startWithC &lt;- function(x) {
     c &lt;- grep(&quot;^c.*&quot;, x)
     return(length(c))
 }
-startWithC(c(&quot;apple&quot;, &quot;ass&quot;, &quot;nad&quot;, &quot;bad&quot;))
+startWithC(c(&quot;abunch&quot;, &quot;none&quot;, &quot;seven&quot;, &quot;ass&quot;, &quot;behind&quot;, &quot;bro&quot;, &quot;crop&quot;))
 </code></pre>
 
-<pre><code>## [1] 0
+<pre><code>## [1] 1
 </code></pre>
 
 <pre><code class="r">v &lt;- c(&quot;uoqu&quot;, &quot;uquo&quot;, &quot;aqao&quot;, &quot;uoqoaq&quot;, &quot;abcd&quot;, &quot;abqgohn&quot;, &quot;aqua&quot;, &quot;aqaa&quot;, 
@@ -317,34 +329,6 @@ crosswordPattern(c(a = 1, b = 2), 7)
 ## [64] &quot;absinth&quot; &quot;absolve&quot; &quot;absorbs&quot; &quot;abstain&quot; &quot;absurds&quot; &quot;abubble&quot; &quot;abulias&quot;
 ## [71] &quot;abusers&quot; &quot;abusing&quot; &quot;abusive&quot; &quot;abuttal&quot; &quot;abutted&quot; &quot;abutter&quot; &quot;abvolts&quot;
 ## [78] &quot;abwatts&quot; &quot;abysmal&quot; &quot;abyssal&quot; &quot;abysses&quot;
-</code></pre>
-
-<pre><code class="r">scrabble &lt;- function(x) {
-    newString = strsplit(x, split = &quot;&quot;)[[1]]
-    search = newString[1]
-    otherWords = words[grep(search, words)]
-    search2 = newString[2]
-    otherWords = otherWords[grep(search2, otherWords)]
-    search3 = newString[3]
-    otherWords = otherWords[grep(search3, otherWords)]
-    search4 = newString[4]
-    otherWords = otherWords[grep(search4, otherWords)]
-    search5 = newString[5]
-    otherWords = otherWords[grep(search5, otherWords)]
-
-    results = c()
-    topWord = otherWords[which.max(nchar(otherWords))]
-    results = c(results, topWord)
-    otherWords = otherWords[-topWord]
-
-    sceondWord = otherWords[which.max(nchar(otherWords))]
-    results = c(results, secondWord)
-    otherWords = otherWords[-secondWord]
-}
-scrabble(&quot;abczz&quot;)
-</code></pre>
-
-<pre><code>## Error: invalid argument to unary operator
 </code></pre>
 
 <pre><code class="r">scrabble &lt;- function(word) {

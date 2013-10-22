@@ -1,6 +1,7 @@
-words <- readLines(url("http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt"))
 
 ```r
+words <- readLines(url("http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt"))
+
 
 NumOfOneLet <- function(x) {
     oneLet <- length(grep("^.$", x))
@@ -10,7 +11,7 @@ NumOfOneLet(words)
 ```
 
 ```
-## Error: object 'words' not found
+## [1] 0
 ```
 
 ```r
@@ -23,7 +24,7 @@ NumOfTwoLet(words)
 ```
 
 ```
-## Error: object 'words' not found
+## [1] 85
 ```
 
 ```r
@@ -36,13 +37,14 @@ NumOfThreeLet(words)
 ```
 
 ```
-## Error: object 'words' not found
+## [1] 908
 ```
 
 
 
 ```r
-v <- c("a", "bros", "hey", "ba", "r", "o", "o")
+words <- readLines(url("http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt"))
+
 longestWords <- function(x) {
     results <- c()
     b <- which.max(nchar(x))
@@ -64,6 +66,17 @@ longestWords <- function(x) {
     x <- x[-e]
     return(results)
 }
+longestWords(words)
+```
+
+```
+## Warning: closing unused connection 5
+## (http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt)
+```
+
+```
+## [1] "counterdemonstrations" "hyperaggressivenesses" "microminiaturizations"
+## [4] "counterdemonstration"
 ```
 
 
@@ -71,11 +84,13 @@ longestWords <- function(x) {
 
 
 ```r
+
+
 startWithA <- function(x) {
     a <- grep("^a.*", x)
     return(length(a))
 }
-startWithA(c("apple", "ass", "nad", "bad"))
+startWithA(c("abunch", "none", "seven", "ass", "behind", "bro", "crop"))
 ```
 
 ```
@@ -88,11 +103,11 @@ startWithB <- function(x) {
     b <- grep("^b.*", x)
     return(length(b))
 }
-startWithB(c("apple", "ass", "nad", "bad"))
+startWithB(c("abunch", "none", "seven", "ass", "behind", "bro", "crop"))
 ```
 
 ```
-## [1] 1
+## [1] 2
 ```
 
 ```r
@@ -101,11 +116,11 @@ startWithC <- function(x) {
     c <- grep("^c.*", x)
     return(length(c))
 }
-startWithC(c("apple", "ass", "nad", "bad"))
+startWithC(c("abunch", "none", "seven", "ass", "behind", "bro", "crop"))
 ```
 
 ```
-## [1] 0
+## [1] 1
 ```
 
 
@@ -171,39 +186,7 @@ crosswordPattern(c(a = 1, b = 2), 7)
 ```
 
 
-
-
-```r
-scrabble <- function(x) {
-    newString = strsplit(x, split = "")[[1]]
-    search = newString[1]
-    otherWords = words[grep(search, words)]
-    search2 = newString[2]
-    otherWords = otherWords[grep(search2, otherWords)]
-    search3 = newString[3]
-    otherWords = otherWords[grep(search3, otherWords)]
-    search4 = newString[4]
-    otherWords = otherWords[grep(search4, otherWords)]
-    search5 = newString[5]
-    otherWords = otherWords[grep(search5, otherWords)]
-    
-    results = c()
-    topWord = otherWords[which.max(nchar(otherWords))]
-    results = c(results, topWord)
-    otherWords = otherWords[-topWord]
-    
-    sceondWord = otherWords[which.max(nchar(otherWords))]
-    results = c(results, secondWord)
-    otherWords = otherWords[-secondWord]
-}
-scrabble("abczz")
-```
-
-```
-## Error: invalid argument to unary operator
-```
-
-
+ 
 
 ```r
 scrabble <- function(word) {

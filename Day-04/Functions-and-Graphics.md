@@ -10,7 +10,6 @@ countOdds <- function(x) {
     }
     return(k)
 }
-
 countOdds(c(3, 5))
 ```
 
@@ -60,7 +59,7 @@ hypotenuseLength(3, 4)
 ```r
 lawOfCosines <- function(x, y, z) {
     a <- x^2 + y^2
-    b <- 2 * x * y * cos(z)
+    b <- -2 * x * y * cos(z)
     h <- sqrt(a - b)
     return(h)
 }
