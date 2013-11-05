@@ -1,4 +1,4 @@
-# Not DONE
+# 1 Section Left
 
 ``` {r}
 BlastOffPaste <- function(x) {
@@ -8,28 +8,35 @@ BlastOffPaste <- function(x) {
 BlastOffPaste(5)
 ```
 
-## Still not yet fully done
+
 ``` {r}
 blastOffFor <- function(x) {
   count <- 0
   ans <- c()
   for(k in x:1){
     count <- k
-    ans <- c(ans, count)
+    ans <- paste(ans, count)
     }
-  return(paste(ans, "Blastoff!", collapse = ""))
-  }  
+  newans <- paste(ans, "BlastOff!", collapse="")
+  return(newans)
+  }
+  
 blastOffFor(5)
 ```
 
+
+# Cant finish
 ``` {r}
 blastWhile <- function(x) {
   ans <- c()
-  while (x >= 1 == TRUE) {
+  while (x > 0) {
     ans <- c(ans, x)
+    x <-x-1
   }
-return(ans)
+  newans <- paste(ans, "BlastOff!", collapse="")
+  return(newans)
   }
+blastWhile(5)
 ```
 
 ``` {r}
@@ -48,9 +55,11 @@ blastOffRep(5)
 ```
 
 ``` {r}
-pushButton <- function(N) {
+testLatency <- function(N) {
   result <- rep(NA, N)
-  for ( k in 1:N) {
+  readline("Ready?")
+  
+  for ( k in 1:20) {
     
     start <- Sys.time()
     readline("Press return:")
@@ -63,3 +72,29 @@ pushButton <- function(N) {
   return(result)
   }
 ```
+
+``` {r}
+Elaboration <- function(n) {
+  result <- rep(NA, N)
+  readline("ready")
+  
+  for ( k in 1:n) {
+    cat(rep("\n",20))
+    Sys.Sleep(pauses[k])
+    start <- Sys.time()
+    scramble <- strsplit("random", split=character(0))
+    inpuut <- scramble[[1]][sample(nchar("random"):1)]
+    inpuut <- paste(inpuut, collapse="")
+    val <- readline(paste("Type in:", inpuut, " "))
+    while (inpuut != val){
+      val <- readline(paste("Try again: "))
+    }
+    end <- Sys.time()
+    total <- as.numeric(end - start)
+    cat(rep("\n", 1))
+    result[k] <- total
+    Sys.sleep(runif(1,1,5))
+    }
+  return(result)
+}
+

@@ -1,0 +1,303 @@
+# NOT DONE
+
+
+```r
+addNSeq <- function(v) {
+    sum <- 0  #accumulator
+    for (k in 1:length(v)) {
+        sum <- sum + v[k]
+    }
+    return(sum)
+}
+addNSeq(1:5)
+```
+
+```
+## [1] 15
+```
+
+
+
+
+```r
+addRecursively <- function(v) {
+    if (length(v) == 0) 
+        return(0)
+    return(v[1] + newAddEm(v[-1]))
+}
+addRecursively(c(1, 2, 3))
+```
+
+```
+## Error: could not find function "newAddEm"
+```
+
+
+
+
+```r
+addNSeqLoop <- function(n) {
+    sum <- c()
+    for (k in n:0) {
+        sum <- c(sum, k)
+        k <- k - 1
+    }
+    
+    return(sum(sum))
+}
+addNSeqLoop(5)
+```
+
+```
+## [1] 15
+```
+
+
+#??
+
+```r
+addRecurLoop <- function(x) {
+    sum <- c()
+    l <- length(x)
+    while (x > x[l]) {
+        sum <- c(sum, x)
+        x <- x - 1
+    }
+    return(sum)
+}
+addRecurLoop(c(5, 4, 3))
+```
+
+```
+## Warning: the condition has length > 1 and only the first element will be
+## used Warning: the condition has length > 1 and only the first element will
+## be used Warning: the condition has length > 1 and only the first element
+## will be used Warning: the condition has length > 1 and only the first
+## element will be used Warning: the condition has length > 1 and only the
+## first element will be used Warning: the condition has length > 1 and only
+## the first element will be used Warning: the condition has length > 1 and
+## only the first element will be used Warning: the condition has length > 1
+## and only the first element will be used Warning: the condition has length
+## > 1 and only the first element will be used Warning: the condition has
+## length > 1 and only the first element will be used Warning: the condition
+## has length > 1 and only the first element will be used Warning: the
+## condition has length > 1 and only the first element will be used Warning:
+## the condition has length > 1 and only the first element will be used
+## Warning: the condition has length > 1 and only the first element will be
+## used Warning: the condition has length > 1 and only the first element will
+## be used Warning: the condition has length > 1 and only the first element
+## will be used Warning: the condition has length > 1 and only the first
+## element will be used Warning: the condition has length > 1 and only the
+## first element will be used Warning: the condition has length > 1 and only
+## the first element will be used Warning: the condition has length > 1 and
+## only the first element will be used Warning: the condition has length > 1
+## and only the first element will be used Warning: the condition has length
+## > 1 and only the first element will be used Warning: the condition has
+## length > 1 and only the first element will be used Warning: the condition
+## has length > 1 and only the first element will be used Warning: the
+## condition has length > 1 and only the first element will be used Warning:
+## the condition has length > 1 and only the first element will be used
+## Warning: the condition has length > 1 and only the first element will be
+## used Warning: the condition has length > 1 and only the first element will
+## be used Warning: the condition has length > 1 and only the first element
+## will be used Warning: the condition has length > 1 and only the first
+## element will be used Warning: the condition has length > 1 and only the
+## first element will be used Warning: the condition has length > 1 and only
+## the first element will be used Warning: the condition has length > 1 and
+## only the first element will be used Warning: the condition has length > 1
+## and only the first element will be used Warning: the condition has length
+## > 1 and only the first element will be used Warning: the condition has
+## length > 1 and only the first element will be used Warning: the condition
+## has length > 1 and only the first element will be used Warning: the
+## condition has length > 1 and only the first element will be used Warning:
+## the condition has length > 1 and only the first element will be used
+## Warning: the condition has length > 1 and only the first element will be
+## used Warning: the condition has length > 1 and only the first element will
+## be used Warning: the condition has length > 1 and only the first element
+## will be used Warning: the condition has length > 1 and only the first
+## element will be used Warning: the condition has length > 1 and only the
+## first element will be used Warning: the condition has length > 1 and only
+## the first element will be used Warning: the condition has length > 1 and
+## only the first element will be used Warning: the condition has length > 1
+## and only the first element will be used Warning: the condition has length
+## > 1 and only the first element will be used Warning: the condition has
+## length > 1 and only the first element will be used Warning: the condition
+## has length > 1 and only the first element will be used Warning: the
+## condition has length > 1 and only the first element will be used Warning:
+## the condition has length > 1 and only the first element will be used
+## Warning: the condition has length > 1 and only the first element will be
+## used Warning: the condition has length > 1 and only the first element will
+## be used Warning: the condition has length > 1 and only the first element
+## will be used Warning: the condition has length > 1 and only the first
+## element will be used Warning: the condition has length > 1 and only the
+## first element will be used Warning: the condition has length > 1 and only
+## the first element will be used Warning: the condition has length > 1 and
+## only the first element will be used Warning: the condition has length > 1
+## and only the first element will be used Warning: the condition has length
+## > 1 and only the first element will be used Warning: the condition has
+## length > 1 and only the first element will be used Warning: the condition
+## has length > 1 and only the first element will be used Warning: the
+## condition has length > 1 and only the first element will be used Warning:
+## the condition has length > 1 and only the first element will be used
+## Warning: the condition has length > 1 and only the first element will be
+## used Warning: the condition has length > 1 and only the first element will
+## be used Warning: the condition has length > 1 and only the first element
+## will be used Warning: the condition has length > 1 and only the first
+## element will be used Warning: the condition has length > 1 and only the
+## first element will be used Warning: the condition has length > 1 and only
+## the first element will be used Warning: the condition has length > 1 and
+## only the first element will be used Warning: the condition has length > 1
+## and only the first element will be used Warning: the condition has length
+## > 1 and only the first element will be used Warning: the condition has
+## length > 1 and only the first element will be used Warning: the condition
+## has length > 1 and only the first element will be used Warning: the
+## condition has length > 1 and only the first element will be used Warning:
+## the condition has length > 1 and only the first element will be used
+## Warning: the condition has length > 1 and only the first element will be
+## used Warning: the condition has length > 1 and only the first element will
+## be used Warning: the condition has length > 1 and only the first element
+## will be used Warning: the condition has length > 1 and only the first
+## element will be used Warning: the condition has length > 1 and only the
+## first element will be used Warning: the condition has length > 1 and only
+## the first element will be used Warning: the condition has length > 1 and
+## only the first element will be used Warning: the condition has length > 1
+## and only the first element will be used Warning: the condition has length
+## > 1 and only the first element will be used Warning: the condition has
+## length > 1 and only the first element will be used Warning: the condition
+## has length > 1 and only the first element will be used Warning: the
+## condition has length > 1 and only the first element will be used Warning:
+## the condition has length > 1 and only the first element will be used
+## Warning: the condition has length > 1 and only the first element will be
+## used Warning: the condition has length > 1 and only the first element will
+## be used Warning: the condition has length > 1 and only the first element
+## will be used Warning: the condition has length > 1 and only the first
+## element will be used Warning: the condition has length > 1 and only the
+## first element will be used Warning: the condition has length > 1 and only
+## the first element will be used Warning: the condition has length > 1 and
+## only the first element will be used Warning: the condition has length > 1
+## and only the first element will be used Warning: the condition has length
+## > 1 and only the first element will be used Warning: the condition has
+## length > 1 and only the first element will be used Warning: the condition
+## has length > 1 and only the first element will be used Warning: the
+## condition has length > 1 and only the first element will be used Warning:
+## the condition has length > 1 and only the first element will be used
+## Warning: the condition has length > 1 and only the first element will be
+## used Warning: the condition has length > 1 and only the first element will
+## be used Warning: the condition has length > 1 and only the first element
+## will be used Warning: the condition has length > 1 and only the first
+## element will be used Warning: the condition has length > 1 and only the
+## first element will be used Warning: the condition has length > 1 and only
+## the first element will be used Warning: the condition has length > 1 and
+## only the first element will be used Warning: the condition has length > 1
+## and only the first element will be used Warning: the condition has length
+## > 1 and only the first element will be used Warning: the condition has
+## length > 1 and only the first element will be used Warning: the condition
+## has length > 1 and only the first element will be used Warning: the
+## condition has length > 1 and only the first element will be used Warning:
+## the condition has length > 1 and only the first element will be used
+## Warning: the condition has length > 1 and only the first element will be
+## used Warning: the condition has length > 1 and only the first element will
+## be used Warning: the condition has length > 1 and only the first element
+## will be used Warning: the condition has length > 1 and only the first
+## element will be used
+```
+
+```
+## Error: argument is not interpretable as logical
+```
+
+
+
+```r
+addNSeqSimp <- function(n) {
+    ans <- n + (n - 1) + (n - 2) + (n - 3) + (n - 4) + (n - 5)
+    return(ans)
+}
+addNSeqSimp(5)
+```
+
+```
+## [1] 15
+```
+
+
+
+```r
+addRecurSimp <- function(n) {
+    ans <- n[1] + n[2] + n[3] + n[4] + n[5]
+    return(ans)
+}
+addRecurSimp(c(1, 2, 3, 4, 5))
+```
+
+```
+## [1] 15
+```
+
+
+## ??
+
+```r
+fibLoop <- function(n) {
+    
+}
+```
+
+
+
+```r
+integrateRecursive <- function(n) {
+    
+}
+```
+
+
+
+```r
+gaussQuadrature <- function(f, a = 0, b = 1) {
+    # Just 4 function evaluations!
+    
+    # 'Magic' values on z in [0,1]
+    z <- c(c(-1, 1) * sqrt((3 - 2 * sqrt(6/5))/7), c(-1, 1) * sqrt((3 + 2 * 
+        sqrt(6/5))/7))
+    # weights (analogous to bin width)
+    w <- c(rep((18 + sqrt(30))/36, 2), rep((18 - sqrt(30))/36, 2))
+    # Translate to interval x in [a,b]
+    x <- ((b - a)/2) * z + (a + b)/2
+    # evaluate the function at x, multiply by weights, and sum
+    return(((b - a)/2) * sum(w * sapply(x, f)))
+}
+gaussQuadrature(function(x) x^300, 0, 10)  # Still accurate
+```
+
+```
+## [1] 7.325e+290
+```
+
+```r
+gaussQuadrature(function(x) x^400, 0, 10)  # Too large
+```
+
+```
+## [1] Inf
+```
+
+```r
+gaussQuadrature(function(x) sin(x), 0, 11)  # Starts being innacurate
+```
+
+```
+## [1] 1.427
+```
+
+
+
+
+
+
+```r
+plotF <- function(f, a = 0, b = 1) {
+    
+}
+
+```
