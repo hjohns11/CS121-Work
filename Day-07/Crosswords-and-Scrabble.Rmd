@@ -1,4 +1,4 @@
-# DONE
+# I'm not getting any errors, Cory said he did
 
 ``` {r}
 words <- readLines(url("http://dtkaplan.github.io/ScientificComputing/Syllabus/Daily/Day-07/word_list_moby_crossword-flat/word_list_moby_crossword.flat.txt"))

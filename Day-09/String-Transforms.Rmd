@@ -58,9 +58,3 @@ L33t("eosgeosghheosg")
 ```
 
 
-# Substituion Cypher
-
-```{r} # same as L33t, but longer, every letter is replaced by only one other letter
-subCypher <- function(x){
-  
-}

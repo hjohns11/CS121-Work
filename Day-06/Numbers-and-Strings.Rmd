@@ -1,4 +1,4 @@
-# NOT DONE
+# Ask Cory, ask about the last couple
 
 ```{r}
 outliers <- function(x) {
@@ -29,25 +29,62 @@ TextToNum("three", EnglishNumbers)
 ```
 
 
-## Need to Finish
+
 ``` {r}
 digitToWord <- function(integer,language) {
-  if (v == 0){
-    return("dog")
+  if (language == "English") {
+    if (integer == "0") print("zero")
+    if (integer == "1") print("one")
+    if (integer == "2") print("two")
+    if (integer == "3") print("three")
+    if (integer == "4") print("four")
+    if (integer == "5") print("five")
+    if (integer == "6") print("six")
+    if (integer == "7") print("seven")
+    if (integer == "8") print("eight")
+    if (integer == "9") print("nine")
   }
+  if (language == "Spanish"){
+    if (integer == "0") print("cero")
+    if (integer == "1") print("uno")
+    if (integer == "2") print("dos")
+    if (integer == "3") print("tres")
+    if (integer == "4") print("cuatro")
+    if (integer == "5") print("cinco")
+    if (integer == "6") print("seis")
+    if (integer == "7") print("siete")
+    if (integer == "8") print("nueve")
+    if (integer == "9") print("niete")
   }
-```
-digitToWord(0)
+  if (language == "French"){
+    if (integer == "0") print("zero")
+    if (integer == "1") print("un")
+    if (integer == "2") print("deux")
+    if (integer == "3") print("trois")
+    if (integer == "4") print("quatre")
+    if (integer == "5") print("cinq")
+    if (integer == "6") print("six")
+    if (integer == "7") print("sept")
+    if (integer == "8") print("huit")
+    if (integer == "9") print("neuf")
+  }
+}
 
+digitToWord("5", "Spanish")
+digitToWord("1", "English")
+digitToWord("9", "French")
+```
 
 
 
 ``` {r}
+v <- c("apple", "berry", "carrie", "rr")
 lettersMatch <- function(words,pattern) {
   a = grep(pattern,words)
-return(a)
+  
+  return(v[a])
   }
-lettersMatch(c("apple", "berry", "carrie", "rr"), "rr" )
+lettersMatch(v, "rr" )
 ```
 
 ``` {r}
@@ -64,19 +101,21 @@ piSeries <- function(n) {
 piSeries(7)
 ```
 
-## Very close, can't quite alternate plus and negative though
+
 ``` {r}
 other <- function(n) {
-  sum <- 0
-  f <- 1:n
-  for (k in 1:n) {
-    sum <- sum + ((-1)^k)
-    if (k%%2 != 0 ) {
-      k <- k+1
-      }
-  return(sum)
+  sum <- 1
+  num <- 1
+  for (k in 3:n) {
+    if (n%%2 == 1){
+    sum <- sum + (-1/k)*(num)
+    num <- num*-1
+    }
   }
-  }
+  return(sum*4)
+}
+  
+other(30)
 ```
 
 ## IDK

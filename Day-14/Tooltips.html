@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>Ask Cory, ask about the last couple</title>
+<title></title>
 
 <style type="text/css">
 body, td {
@@ -178,183 +178,61 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h1>Ask Cory, ask about the last couple</h1>
-
-<pre><code class="r">outliers &lt;- function(x) {
-    a &lt;- quantile(x)[2]
-    b &lt;- quantile(x)[4]
-    as.logical(x &lt; a | x &gt; b)
-
+<pre><code class="r">
+formatWord &lt;- function(word, trans, class1) {
+    if (is.na(trans)) 
+        return(word)
+    ans1 &lt;- paste(&quot;&lt;span class=&#39;&quot;, class1, &quot;&#39; &quot;, sep = &quot;&quot;)
+    ans2 &lt;- paste(ans1, &quot;title=&#39;&quot;, trans, &quot;&#39;&gt;&quot;, sep = &quot;&quot;)
+    ans3 &lt;- paste(ans2, word, &quot;&lt;/span&gt;&quot;, sep = &quot;&quot;)
+    return(ans3)
 }
-outliers(1:10)
+
+cat(formatWord(&quot;Hello&quot;, &quot;hi there!&quot;, class = &quot;hiword&quot;))
 </code></pre>
 
-<pre><code>##  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE
+<p><span class='hiword' title='hi there!'>Hello</span></p>
+
+<pre><code class="r">
+cat(formatWord(&quot;Hello&quot;, &quot;hi there!&quot;, class = &quot;hiword&quot;), &quot;to&quot;, &quot;all&quot;, &quot;of&quot;, &quot;you&quot;, 
+    &quot;in&quot;, formatWord(&quot;Television Land.&quot;, &quot;TV Viewers&quot;, &quot;hiword&quot;))
 </code></pre>
 
-<pre><code class="r">EnglishNumbers &lt;- c(&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;)
-numToText &lt;- function(num, lang) {
-    ans &lt;- lang[num + 1]
-    return(ans)
-}
-numToText(2, EnglishNumbers)
-</code></pre>
+<p><span class='hiword' title='hi there!'>Hello</span> to all of you in <span class='hiword' title='TV Viewers'>Television Land.</span></p>
 
-<pre><code>## [1] &quot;two&quot;
-</code></pre>
+<pre><code class="r">words &lt;- c(&quot;How&quot;, &quot;now&quot;, &quot;brown&quot;, &quot;cow&quot;, &quot;!&quot;)
+tips &lt;- c(&quot;How are you doing?&quot;, NA, &quot;Why brown?&quot;, &quot;bovine&quot;, &quot;enthusiasm&quot;)
+styles &lt;- c(&quot;hiword&quot;, &quot;&quot;, &quot;brown&quot;, &quot;blue&quot;, &quot;hiword&quot;)
 
-<pre><code class="r">EnglishNumbers &lt;- c(&quot;zero&quot;, &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;)
-TextToNum &lt;- function(word, lang) {
-    ans = which(lang == word)
-    return(ans - 1)
-}
-TextToNum(&quot;three&quot;, EnglishNumbers)
-</code></pre>
-
-<pre><code>## [1] 3
-</code></pre>
-
-<pre><code class="r">digitToWord &lt;- function(integer, language) {
-    if (language == &quot;English&quot;) {
-        if (integer == &quot;0&quot;) 
-            print(&quot;zero&quot;)
-        if (integer == &quot;1&quot;) 
-            print(&quot;one&quot;)
-        if (integer == &quot;2&quot;) 
-            print(&quot;two&quot;)
-        if (integer == &quot;3&quot;) 
-            print(&quot;three&quot;)
-        if (integer == &quot;4&quot;) 
-            print(&quot;four&quot;)
-        if (integer == &quot;5&quot;) 
-            print(&quot;five&quot;)
-        if (integer == &quot;6&quot;) 
-            print(&quot;six&quot;)
-        if (integer == &quot;7&quot;) 
-            print(&quot;seven&quot;)
-        if (integer == &quot;8&quot;) 
-            print(&quot;eight&quot;)
-        if (integer == &quot;9&quot;) 
-            print(&quot;nine&quot;)
+formatString &lt;- function(word, tips, styles) {
+    results &lt;- c()
+    for (k in 1:length(word)) {
+        results[k] &lt;- formatWord(word[k], tips[k], styles[k])
     }
-    if (language == &quot;Spanish&quot;) {
-        if (integer == &quot;0&quot;) 
-            print(&quot;cero&quot;)
-        if (integer == &quot;1&quot;) 
-            print(&quot;uno&quot;)
-        if (integer == &quot;2&quot;) 
-            print(&quot;dos&quot;)
-        if (integer == &quot;3&quot;) 
-            print(&quot;tres&quot;)
-        if (integer == &quot;4&quot;) 
-            print(&quot;cuatro&quot;)
-        if (integer == &quot;5&quot;) 
-            print(&quot;cinco&quot;)
-        if (integer == &quot;6&quot;) 
-            print(&quot;seis&quot;)
-        if (integer == &quot;7&quot;) 
-            print(&quot;siete&quot;)
-        if (integer == &quot;8&quot;) 
-            print(&quot;nueve&quot;)
-        if (integer == &quot;9&quot;) 
-            print(&quot;niete&quot;)
-    }
-    if (language == &quot;French&quot;) {
-        if (integer == &quot;0&quot;) 
-            print(&quot;zero&quot;)
-        if (integer == &quot;1&quot;) 
-            print(&quot;un&quot;)
-        if (integer == &quot;2&quot;) 
-            print(&quot;deux&quot;)
-        if (integer == &quot;3&quot;) 
-            print(&quot;trois&quot;)
-        if (integer == &quot;4&quot;) 
-            print(&quot;quatre&quot;)
-        if (integer == &quot;5&quot;) 
-            print(&quot;cinq&quot;)
-        if (integer == &quot;6&quot;) 
-            print(&quot;six&quot;)
-        if (integer == &quot;7&quot;) 
-            print(&quot;sept&quot;)
-        if (integer == &quot;8&quot;) 
-            print(&quot;huit&quot;)
-        if (integer == &quot;9&quot;) 
-            print(&quot;neuf&quot;)
-    }
+    return(cat(results))
 }
 
-digitToWord(&quot;5&quot;, &quot;Spanish&quot;)
+formatString(words, tips, styles)
 </code></pre>
 
-<pre><code>## [1] &quot;cinco&quot;
+<p><span class='hiword' title='How are you doing?'>How</span> now <span class='brown' title='Why brown?'>brown</span> <span class='blue' title='bovine'>cow</span> <span class='hiword' title='enthusiasm'>!</span></p>
+
+<pre><code class="r">
+formatString(c(&quot;How&quot;, &quot;now&quot;, &quot;brown&quot;, &quot;cow&quot;, &quot;!&quot;, &quot;When&quot;), c(&quot;How are you doing?&quot;, 
+    NA, &quot;Why brown?&quot;, &quot;bovine&quot;, &quot;enthusiasm&quot;, &quot;Fancy Font&quot;), c(&quot;hiword&quot;, &quot;&quot;, 
+    &quot;brown&quot;, &quot;blue&quot;, &quot;hiword&quot;, &quot;bigfont&quot;))
 </code></pre>
 
-<pre><code class="r">digitToWord(&quot;1&quot;, &quot;English&quot;)
-</code></pre>
+<p><span class='hiword' title='How are you doing?'>How</span> now <span class='brown' title='Why brown?'>brown</span> <span class='blue' title='bovine'>cow</span> <span class='hiword' title='enthusiasm'>!</span> <span class='bigfont' title='Fancy Font'>When</span></p>
 
-<pre><code>## [1] &quot;one&quot;
-</code></pre>
+<style>
+.hiword {background:pink;}
+.brown {background:brown;}
+.blue {background:blue;}
+.bigfont {font:italic 30px serif;}
+</style>
 
-<pre><code class="r">digitToWord(&quot;9&quot;, &quot;French&quot;)
-</code></pre>
-
-<pre><code>## [1] &quot;neuf&quot;
-</code></pre>
-
-<h1>My test cases are working, check with Cory</h1>
-
-<pre><code class="r">v &lt;- c(&quot;apple&quot;, &quot;berry&quot;, &quot;carrie&quot;, &quot;rr&quot;)
-lettersMatch &lt;- function(words, pattern) {
-    a = grep(pattern, words)
-
-    return(v[a])
-}
-lettersMatch(v, &quot;rr&quot;)
-</code></pre>
-
-<pre><code>## [1] &quot;berry&quot;  &quot;carrie&quot; &quot;rr&quot;
-</code></pre>
-
-<pre><code class="r">piSeries &lt;- function(n) {
-    k &lt;- 1:n
-    sum &lt;- 4 * (1 - (1/k[3]))
-    sum &lt;- sum + (1/k[5])
-    sum &lt;- sum - (1/k[7])
-    sum &lt;- sum + (1/k[9])
-    sum &lt;- sum - (1/k[11])
-    sum &lt;- sum
-    return(sum)
-}
-piSeries(7)
-</code></pre>
-
-<pre><code>## [1] NA
-</code></pre>
-
-<h2>Very close, can&#39;t quite alternate plus and negative though</h2>
-
-<pre><code class="r">other &lt;- function(n) {
-    sum &lt;- 0
-    for (k in 1:n) {
-        sum &lt;- sum + ((-1)^k)
-        if (k%%2 == 0) {
-            k &lt;- k + 1
-        }
-        return(sum)
-    }
-}
-other(5)
-</code></pre>
-
-<pre><code>## [1] -1
-</code></pre>
-
-<h2>IDK</h2>
-
-<pre><code class="r">howCloseToPi &lt;- function(n) {
-
-}
-</code></pre>
+<p>This <span class='hiword' title='This one!'> set of words </span> has a tool tip. </p>
 
 </body>
 

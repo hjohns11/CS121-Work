@@ -2,6 +2,7 @@
 
 ## Task 1
 
+# ??
 ```{r}
 toBase <- function(int, base) {
   
@@ -13,11 +14,12 @@ toBase <- function(int, base) {
   }
   return(sofar)
   }
-toBase(43, 3)
+toBase(1000, 16)
 ```
 
 ## Task 2
 
+# Good?
 ```{r}
 basetoNumeric <- function(v, b) {
   v <- as.numeric(v)
