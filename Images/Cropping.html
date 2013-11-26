@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>1 Section Left</title>
+<title>Left Paw</title>
 
 <style type="text/css">
 body, td {
@@ -178,107 +178,45 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h1>1 Section Left</h1>
+<h1>Left Paw</h1>
 
-<pre><code class="r">BlastOffPaste &lt;- function(x) {
-    ans &lt;- paste(&quot;5,&quot;, &quot;4,&quot;, &quot;3,&quot;, &quot;2,&quot;, &quot;1,&quot;, &quot;Blastoff!&quot;, collapse = &quot;/n&quot;)
-    return(cat(ans))
-}
-BlastOffPaste(5)
+<pre><code class="r">install_url(&quot;http://dtkaplan.github.io/ScientificComputing/Resources/COMP121_0.1.tar.gz&quot;)
 </code></pre>
 
-<pre><code>## 5, 4, 3, 2, 1, Blastoff!
+<pre><code>## Error: could not find function &quot;install_url&quot;
 </code></pre>
 
-<pre><code class="r">blastOffFor &lt;- function(x) {
-    count &lt;- 0
-    ans &lt;- c()
-    for (k in x:1) {
-        count &lt;- k
-        ans &lt;- paste(ans, count)
-    }
-    newans &lt;- paste(ans, &quot;BlastOff!&quot;, collapse = &quot;&quot;)
-    return(newans)
-}
-
-blastOffFor(5)
+<pre><code class="r">require(devtools)
 </code></pre>
 
-<pre><code>## [1] &quot; 5 4 3 2 1 BlastOff!&quot;
+<pre><code>## Loading required package: devtools
 </code></pre>
 
-<pre><code class="r">blastWhile &lt;- function(x) {
-    ans &lt;- c()
-    while (x &lt;= 1) {
-        ans &lt;- c(ans, x)
-        x &lt;- x + 1
-    }
-    return(ans)
-}
-blastWhile(5)
+<pre><code class="r">require(COMP121)
 </code></pre>
 
-<pre><code>## NULL
+<pre><code>## Loading required package: COMP121 Loading required package: jpeg Loading
+## required package: png Loading required package: RCurl Loading required
+## package: bitops Loading required package: markdown
 </code></pre>
 
-<pre><code class="r">blastOffRep &lt;- function(x) {
-    time &lt;- 5
-    repeat {
-        x &lt;- cat(time, &quot; &quot;)
-        time &lt;- time - 1
-        if (time &lt; 1) 
-            break
-    }
+<pre><code class="r">
 
-    return(cat(paste(x, &quot;Blastoff!&quot;, sep = &quot;&quot;)))
-}
-blastOffRep(5)
+canvas(x = c(1, 220), y = c(1, 220), asp = 1)
 </code></pre>
 
-<pre><code>## 5  4  3  2  1  Blastoff!
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAAlwSFlzAAALEgAACxIB0t1+/AAAAQ1JREFUeJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgb+JlAAEhE9MRAAAAAElFTkSuQmCC" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<pre><code class="r">part &lt;- puppy[160:200, 1:70, ]
 </code></pre>
 
-<pre><code class="r">testLatency &lt;- function(N) {
-    result &lt;- rep(NA, N)
-    readline(&quot;Ready?&quot;)
-
-    for (k in 1:20) {
-
-        start &lt;- Sys.time()
-        readline(&quot;Press return:&quot;)
-        end &lt;- Sys.time()
-        total &lt;- as.numeric(end - start)
-        cat(rep(&quot;\n&quot;, 1))
-        result[k] &lt;- total
-        Sys.sleep(runif(1, 1, 5))
-    }
-    return(result)
-}
+<pre><code>## Error: object &#39;puppy&#39; not found
 </code></pre>
 
-<pre><code class="r">Elaboration &lt;- function(n) {
-    result &lt;- rep(NA, N)
-    readline(&quot;ready&quot;)
+<pre><code class="r">rasterImage(part, 1, 1, 216, 198)
+</code></pre>
 
-    for (k in 1:n) {
-        cat(rep(&quot;\n&quot;, 20))
-        Sys.Sleep(pauses[k])
-        start &lt;- Sys.time()
-        scramble &lt;- strsplit(&quot;random&quot;, split = character(0))
-        inpuut &lt;- scramble[[1]][sample(nchar(&quot;random&quot;):1)]
-        inpuut &lt;- paste(inpuut, collapse = &quot;&quot;)
-        val &lt;- readline(paste(&quot;Type in:&quot;, inpuut, &quot; &quot;))
-        while (inpuut != val) {
-            val &lt;- readline(paste(&quot;Try again: &quot;))
-        }
-        end &lt;- Sys.time()
-        total &lt;- as.numeric(end - start)
-        cat(rep(&quot;\n&quot;, 1))
-        result[k] &lt;- total
-        Sys.sleep(runif(1, 1, 5))
-    }
-    return(result)
-}
+<pre><code>## Error: object &#39;part&#39; not found
 </code></pre>
 
 </body>

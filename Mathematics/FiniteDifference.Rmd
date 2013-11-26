@@ -1,1 +1,129 @@
 
+$(x^5)/(e^x)$
+
+``` {r}
+evalD <- function(f, x) {
+    h <- 1e-08  # 'Small h'
+    return((f(x + h) - f(x - h))/(2 * h))
+}
+```
+``` {r}
+f <- function (x) {
+  sin(x)
+  }
+
+Df <- function(x) {
+  cos(x)
+}
+g <- function(x) {
+  evalD(f,x)
+  }
+```
+``` {r}
+plotFun(f(x) ~ x, xlim = c(0:10), ylim = c(-1.5:1.5), col = "red")
+plotFun(g(x) ~ x, xlim = c(0:10), ylim = c(-1.5,1.5), add = TRUE)
+
+```
+
+``` {r}
+evalD1 <- function(f, x, h) {
+  h = 1e-20
+  return((f(x + h) - f(x - h))/(2 * h))
+}
+g1 <- function(x) {
+  evalD1(f,x)
+}
+plotFun(g1(x) ~ x, xlim = c(0:10), ylim = c(-1.5,1.5), col = "brown")
+       
+
+evalD2 <- function(f, x, h) {
+  h =  1e-15
+  return((f(x + h) - f(x - h))/(2 * h))
+}
+  g2 <- function(x) {
+  evalD2(f,x)
+}
+plotFun(g2(x) ~ x, xlim = c(0:10), ylim = c(-1.5,1.5), col = "green", add = TRUE)
+        
+        
+evalD3 <- function(f, x, h) {
+  h =  1e-10
+  return((f(x + h) - f(x - h))/(2 * h))
+}
+g3 <- function(x) {
+  evalD3(f,x)
+  }
+plotFun(g3(x) ~ x, xlim = c(0:10), ylim = c(-1.5,1.5), col = "blue", add = TRUE)
+     
+        
+evalD4 <- function(f, x, h) {
+  h =  1e-5
+  return((f(x + h) - f(x - h))/(2 * h))
+ } 
+  g4 <- function(x) {
+  evalD4(f,x)
+  }
+plotFun(g4(x) ~ x, xlim = c(0:10), ylim = c(-1.5,1.5), col = "yellow", add = TRUE)
+    
+        
+evalD5 <- function(f, x, h) {
+  h =  1e-5
+  return((f(x + h) - f(x - h))/(2 * h))  
+}  
+  g5 <- function(x) {
+  evalD5(f,x)
+ } 
+plotFun(g5(x) ~ x, xlim = c(0:10), ylim = c(-1.5,1.5), col = "maroon", add = TRUE)
+  
+        
+evalD6 <- function(f, x, h) {
+  h = .1
+  return((f(x + h) - f(x - h))/(2 * h))  
+}  
+g6 <- function(x) {
+  evalD6(f,x)
+}
+plotFun(g6(x) ~ x, xlim = c(0:10), ylim = c(-1.5,1.5), col = "purple", add = TRUE)        
+  
+        
+evalD7 <- function(f, x, h) {
+  h =  1
+  return((f(x + h) - f(x - h))/(2 * h))
+}
+  g7 <- function(x) {
+  evalD7(f,x)
+  }
+        
+plotFun(g7(x) ~ x, xlim = c(0:10), ylim = c(-1.5,1.5), col = "black", add = TRUE)    
+```
+## h = .1 is the best
+
+``` {r}
+1e-8*abs(0)
+``` 
+ ##It returns 0, the derivative needs to be slightly larger than 0 and the computer is considering it as 0 becuase it is so small
+``` {r}
+1e-8*pmax(1,abs(0))
+```
+
+##This returns the smallest possible value larger than zero the computer will consider not zero.
+
+``` {r}
+myD <- function(f) {
+    return(function(x) evalD(f, x))
+}
+ 
+f <- function(x) {
+  sin(x)
+  }
+
+myD(sin)
+```
+
+``` {r}
+a <- myD(sin)
+b <- myD(a)
+c <- myD(b)
+d <- myD(c)
+d
+```

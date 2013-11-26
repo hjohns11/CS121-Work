@@ -24,17 +24,15 @@ blastOffFor <- function(x) {
 blastOffFor(5)
 ```
 
-
-# Cant finish
+# Can't finish
 ``` {r}
 blastWhile <- function(x) {
   ans <- c()
   while (x > 0) {
     ans <- c(ans, x)
-    x <-x-1
+    x <- x+1
   }
-  newans <- paste(ans, "BlastOff!", collapse="")
-  return(newans)
+return(ans)
   }
 blastWhile(5)
 ```

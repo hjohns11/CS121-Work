@@ -40,18 +40,17 @@ blastOffFor(5)
 ```r
 blastWhile <- function(x) {
     ans <- c()
-    while (x > 0) {
+    while (x <= 1) {
         ans <- c(ans, x)
-        x <- x - 1
+        x <- x + 1
     }
-    newans <- paste(ans, "BlastOff!", collapse = "")
-    return(newans)
+    return(ans)
 }
 blastWhile(5)
 ```
 
 ```
-## [1] "5 BlastOff!4 BlastOff!3 BlastOff!2 BlastOff!1 BlastOff!"
+## NULL
 ```
 
 

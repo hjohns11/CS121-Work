@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>1 Section Left</title>
+<title>Generate a plane of colors</title>
 
 <style type="text/css">
 body, td {
@@ -178,107 +178,52 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h1>1 Section Left</h1>
+<h1>Generate a plane of colors</h1>
 
-<pre><code class="r">BlastOffPaste &lt;- function(x) {
-    ans &lt;- paste(&quot;5,&quot;, &quot;4,&quot;, &quot;3,&quot;, &quot;2,&quot;, &quot;1,&quot;, &quot;Blastoff!&quot;, collapse = &quot;/n&quot;)
-    return(cat(ans))
-}
-BlastOffPaste(5)
-</code></pre>
-
-<pre><code>## 5, 4, 3, 2, 1, Blastoff!
-</code></pre>
-
-<pre><code class="r">blastOffFor &lt;- function(x) {
-    count &lt;- 0
-    ans &lt;- c()
-    for (k in x:1) {
-        count &lt;- k
-        ans &lt;- paste(ans, count)
-    }
-    newans &lt;- paste(ans, &quot;BlastOff!&quot;, collapse = &quot;&quot;)
-    return(newans)
+<pre><code class="r">
+planeBind &lt;- function(red, green, blue) {
+    array(c(red, green, blue), dim &lt;- c(dim(red)[1], dim(red)[2], 3))
 }
 
-blastOffFor(5)
-</code></pre>
 
-<pre><code>## [1] &quot; 5 4 3 2 1 BlastOff!&quot;
-</code></pre>
+npixels &lt;- 50
+howMuchBlue &lt;- 0.5
 
-<pre><code class="r">blastWhile &lt;- function(x) {
-    ans &lt;- c()
-    while (x &lt;= 1) {
-        ans &lt;- c(ans, x)
-        x &lt;- x + 1
-    }
-    return(ans)
+x &lt;- seq(0, 1, length = npixels)
+
+# initialize state
+red &lt;- matrix(0, nrow = npixels, ncol = npixels)
+for (k in 1:npixels) {
+    # update
+    red[, k] &lt;- cbind(x)
 }
-blastWhile(5)
-</code></pre>
 
-<pre><code>## NULL
-</code></pre>
-
-<pre><code class="r">blastOffRep &lt;- function(x) {
-    time &lt;- 5
-    repeat {
-        x &lt;- cat(time, &quot; &quot;)
-        time &lt;- time - 1
-        if (time &lt; 1) 
-            break
-    }
-
-    return(cat(paste(x, &quot;Blastoff!&quot;, sep = &quot;&quot;)))
+green &lt;- matrix(0, nrow = npixels, ncol = npixels)
+for (k in 1:npixels) {
+    green[k, ] &lt;- rbind(x)
 }
-blastOffRep(5)
-</code></pre>
 
-<pre><code>## 5  4  3  2  1  Blastoff!
-</code></pre>
+blue &lt;- matrix(howMuchBlue, nrow = npixels, ncol = npixels)
 
-<pre><code class="r">testLatency &lt;- function(N) {
-    result &lt;- rep(NA, N)
-    readline(&quot;Ready?&quot;)
-
-    for (k in 1:20) {
-
-        start &lt;- Sys.time()
-        readline(&quot;Press return:&quot;)
-        end &lt;- Sys.time()
-        total &lt;- as.numeric(end - start)
-        cat(rep(&quot;\n&quot;, 1))
-        result[k] &lt;- total
-        Sys.sleep(runif(1, 1, 5))
-    }
-    return(result)
+ShowImage &lt;- function(image) {
+    size &lt;- dim(image)
+    canvas(x = c(1, size[2]), y = c(1, size[1]), asp = 1)
+    rasterImage(image, 1, 1, size[2], size[1])
 }
+
+# vvvvvvvvvvvvvvvvvvvvvvvvvvvv
+showImage &lt;- function(img) {
+    z &lt;- dim(img)
+    canvas(x = c(1, z[2]), y = c(1, z[1]), asp = 1)
+    rasterImage(img, 1, 1, z[2], z[1])
+}
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+ShowImage(planeBind(red, green, blue))
 </code></pre>
 
-<pre><code class="r">Elaboration &lt;- function(n) {
-    result &lt;- rep(NA, N)
-    readline(&quot;ready&quot;)
-
-    for (k in 1:n) {
-        cat(rep(&quot;\n&quot;, 20))
-        Sys.Sleep(pauses[k])
-        start &lt;- Sys.time()
-        scramble &lt;- strsplit(&quot;random&quot;, split = character(0))
-        inpuut &lt;- scramble[[1]][sample(nchar(&quot;random&quot;):1)]
-        inpuut &lt;- paste(inpuut, collapse = &quot;&quot;)
-        val &lt;- readline(paste(&quot;Type in:&quot;, inpuut, &quot; &quot;))
-        while (inpuut != val) {
-            val &lt;- readline(paste(&quot;Try again: &quot;))
-        }
-        end &lt;- Sys.time()
-        total &lt;- as.numeric(end - start)
-        cat(rep(&quot;\n&quot;, 1))
-        result[k] &lt;- total
-        Sys.sleep(runif(1, 1, 5))
-    }
-    return(result)
-}
+<pre><code>## Error: could not find function &quot;canvas&quot;
 </code></pre>
 
 </body>

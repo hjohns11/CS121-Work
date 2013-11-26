@@ -39,7 +39,6 @@ ShowImage <- function(image){
  rasterImage(image,1,1,size[2],size[1]) 
  } 
 ```
-
 ## Can't finish, need image as input
 ```{r dev="png", out.width="40%"}
 mirrorImage <- function(image, frameWidth) {
