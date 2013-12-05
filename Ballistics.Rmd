@@ -1,0 +1,53 @@
+
+``` {r}
+
+App <- function() {
+  manipulate({ballistics(v,theta,h)},
+             v = slider(0,50, initial = 1, label = "velocity", step = 1),
+             theta = slider(0,pi/2, initial = pi/8, label = "Launch angle", step = pi/8),
+             h = slider(0,50, initial = 1, label = "Initial hieght", step = 1)
+             )
+}
+```
+
+
+``` {r}
+require(mosaic)
+mass <- 2
+ballisticSimple <- function(state, t) {
+    x <- state[[1]]
+    y <- state[[2]]
+    vx <- state[[3]]
+    vy <- state[[4]]
+    dx <- vx  # Deriv of position is velocity
+    dy <- vy  # ditto for y
+    dvx <- 0  # no friction horizontally
+    dvy <- -9.8/mass  # gravity vertically
+    return(c(dx, dy, dvx, dvy))
+}
+traj1 <- rkintegrate(ballisticSimple, c(x = 0, y = 0, vx = 5, vy = 20), t = 10)
+inds <- traj1$x[, 2] >= 0
+plot(traj1$x[inds, 1], traj1$x[inds, 2], type = "l")
+
+drag <- 0.01  # a parameter
+# Take state as input, return dstate/dt as output
+ballisticsWithAir <- function(state, t) {
+    x <- state[[1]]
+    y <- state[[2]]
+    vx <- state[[3]]
+    vy <- state[[4]]
+    dx <- vx  # Deriv of position is velocity
+    dy <- vy  # ditto for y
+    # Find the total velocity
+    vel <- sqrt(vx^2 + vy^2)
+    # Decompose it into horizontal and vertical components
+    theta <- atan2(vy, vx)
+    dvx <- 0 - (drag * sign(vx) * cos(theta) * vel^1.5)/mass  #horiz
+    dvy <- -9.8 - (drag * sign(vy) * sin(theta) * vel^1.5)/mass  #vertical
+    return(c(dx, dy, dvx, dvy))
+}
+traj2 <- rkintegrate(ballisticsWithAir, c(x = 0, y = 0, vx = 5, vy = 20), t = 5)
+plot(traj1$x[inds, 1], traj1$x[inds, 2], col = "red", type = "l")
+newinds <- traj2$x[, 2] >= 0
+lines(traj2$x[newinds, 1], traj2$x[newinds, 2], lwd = 2, col = "blue")
+```

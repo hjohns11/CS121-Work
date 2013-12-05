@@ -29,6 +29,3 @@ otherD <- function(f,x) {
 ```
 
 ``` {r}
-secD <- function(f) {
-  
-}

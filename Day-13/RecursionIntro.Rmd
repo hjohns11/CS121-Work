@@ -34,18 +34,15 @@ addNSeqLoop <- function(n) {
 addNSeqLoop(5)
 ```
 
-#??
+
 ``` {r}
 addRecurLoop <- function(x) {
-  sum <- c()
-  l <- length(x)
-  while (x > x[l]) {
-    sum <- c(sum, x)
-    x <- x-1
-  }
-  return(sum)       
+  if (length(x) == 1)
+    return(x) else {
+      c(x[1] + addRecurLoop(x[-1]))
+    }
 }
-addRecurLoop(c(5,4,3))
+addRecurLoop(1:5)
 ```
 
 ``` {r}
@@ -64,21 +61,18 @@ addRecurSimp <- function(n) {
 addRecurSimp(c(1,2,3,4,5))
 ```
 
-## ??
+
 ``` {r}
 fibLoop <- function(n) {
-    
+    if (n<2)
+      return(n)
+    return(fibLoop(n-1) + fibLoop(n-2))
 }
 ```
 
-``` {r}
-integrateRecursive <- function(n) {
-  
-}
-```
 
 ``` {r}
-gaussQuadrature <- function(f, a = 0, b = 1) {
+integrateRecursive <- function(f, a = 0, b = 1) {
     # Just 4 function evaluations!
 
     # 'Magic' values on z in [0,1]
@@ -91,19 +85,14 @@ gaussQuadrature <- function(f, a = 0, b = 1) {
     # evaluate the function at x, multiply by weights, and sum
     return(((b - a)/2) * sum(w * sapply(x, f)))
 }
-gaussQuadrature(function(x) x^300, 0, 10) # Still accurate
-gaussQuadrature(function(x) x^400, 0, 10) # Too large
-gaussQuadrature(function(x) sin(x), 0, 11) # Starts being innacurate
+integrateRecursive(function(x) x^300, 0, 10) # Still accurate
+integrateRecursive(function(x) x^400, 0, 10) # Too large
+integrateRecursive(function(x) sin(x), 0, 11) # Starts being innacurate
 ```
 
-``` {r}
 
-```
+# PLOT
 
-``` {r}
-plotF <- function(f, a=0, b=1) {
-  
-}
 
 
 

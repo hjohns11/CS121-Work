@@ -1,4 +1,4 @@
-# Ask Cory, ask about the last couple
+
 
 ```{r}
 outliers <- function(x) {
@@ -90,15 +90,10 @@ lettersMatch(v, "rr" )
 ``` {r}
 piSeries <- function(n) {
   k <- 1:n
-  sum <- 4*(1-(1/k[3]))
-  sum <- sum + (1/k[5])
-  sum <- sum - (1/k[7])
-  sum <- sum + (1/k[9])
-  sum <- sum - (1/k[11])
-  sum <- sum
-  return(sum)
+  series <- ((-1)^(k+1)/(2*k-1))
+  return(4*(sum(series)))
   }
-piSeries(7)
+piSeries(11)
 ```
 
 
@@ -118,8 +113,12 @@ other <- function(n) {
 other(30)
 ```
 
-## IDK
+
 ``` {r}
 howCloseToPi <- function(n) {
-  
+  k <- 1:n
+  y <- sapply(k, FUN = piSeries)
+  plot(k, y, xlab = "n", ylab = "y")
 }
+howCloseToPi(100)
+```
