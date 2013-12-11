@@ -1,0 +1,34 @@
+# Final Exam Programming Task
+
+``` {r}
+require(mosaic)
+fetchData("COMP121/word-hints.R")
+
+letterProportion <- function(string) {
+  nine <- strsplit(string, "")
+  denom <- nchar(string)
+  y <- length(unique(nine[[1]]))    # For simple cases
+  if (denom == y) {
+    list(nine, c(1/y, 1/y, 1/y))   # Need to make second arguement same length as first
+  }
+  else list(nine, ?)   # Need to make both arguements same length
+}
+#letterProportion("boy")
+
+ans <- letterProportionHint('boy')
+
+freqCompare <- function(output, language) {
+  if (names(language) == names(output) {   # Not quite working, trying to see if similar letters are in each list
+    x <- which (names(language) == names(output))
+    y <- which(names(output) == names(language))
+    r <- language[[x]] - output[[y]]
+    return(r^2/language[[x]])
+    }
+  else (return("No Matching Letters"))
+}
+#freqCompare(ans, English)
+
+
+whichLanguage <- function(lang string, lang freq) {
+  
+}
